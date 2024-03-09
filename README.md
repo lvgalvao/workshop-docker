@@ -1,9 +1,32 @@
 # Workshop Docker
 
+Primeiro vamos fazer um "hello world" 
 
-O projeto que precisamos desenvolver simular a operação de leitura de um objeto CSV presente em uma cloud, no caso AWS, onde vamos fazer sua extração e load no Postgres.
+1) Fazer o projeto app.py
 
-Teremos uma aplicação servidor onde irá consumir os dados através do duckdb e do streamlit para expor os dados via um frontend
+2) Escrever o readme ensinando como instalar
+
+3) Criar um arquivo Dockerfile
+
+```Dockerfile
+FROM python:3.12
+RUN pip install poetry
+COPY . /src
+WORKDIR /src
+RUN poetry install
+EXPOSE 8501
+ENTRYPOINT ["poetry","run", "streamlit", "run", "app/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+```
+
+6) Rodar local
+
+```bash
+docker build minha-primeira-imagem
+```
+
+```bash
+docker run -d -p 8501:8501 --name meu-primeiro-container dashboard_hello_world
+```
 
 1) Para gerar os valores mockados utilizar o comando
 
@@ -55,4 +78,6 @@ Para conectar ao seu servidor PostgreSQL a partir do pgAdmin 4:
 [Excalidraw](https://link.excalidraw.com/l/8pvW6zbNUnD/6MNAkqnvTPt)
 
 Tabelas geradas
+
+
 
