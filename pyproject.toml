@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "workshop-docker"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^8.0.2"
+mkdocs = "^1.5.3"
+taskipy = "^1.12.2"
+pre-commit = "^3.6.2"
+ruff = "^0.3.2"
+faker = "^24.1.0"
+python-dotenv = "^1.0.1"
+sqlalchemy = "^2.0.28"
+pandas = "^2.2.1"
+psycopg2-binary = "^2.9.9"
+duckdb = "^0.10.0"
+streamlit = "^1.32.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+format = "ruff format ."
+doc = "mkdocs serve"
+run = "streamlit run dashboard/src/app.py"
